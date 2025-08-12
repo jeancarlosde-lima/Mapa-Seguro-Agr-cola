@@ -1,34 +1,43 @@
-# 🗺️ Pipeline de Validação Geográfica para Seguro Agrícola
+# 🗺️ Mapa Interativo de Culturas Agrícolas no Brasil
 
-![Status](https://img.shields.io/badge/status-concluído-green)
-![Python](https://img.shields.io/badge/python-3.9%2B-blue)
-![License](https://img.shields.io/badge/license-MIT-lightgrey)
+![Licença](https://img.shields.io/badge/license-GPL--3.0-blue)
+![Status](https://img.shields.io/badge/status-funcional-green)
+![Python](https://img.shields.io/badge/python-3.9%2B-informational)
 
-> Um pipeline de engenharia de dados ponta-a-ponta para garantir a máxima qualidade e precisão em dados geoespaciais de risco agrícola.
+> **⚠️ Aviso de Privacidade e LGPD:** Este repositório utiliza um conjunto de **dados 100% fictícios** para fins de demonstração. Nenhuma informação real de clientes, apólices ou segurados está presente, em total conformidade com as melhores práticas de segurança e a Lei Geral de Proteção de Dados (LGPD).
 
 ---
 
-### 🎯 O Desafio
+### 🚀 O que é este projeto?
 
-No setor de seguros agrícolas, a precisão dos dados de localização é fundamental para uma subscrição de risco correta. Dados inconsistentes, com formatos variados ou erros de digitação, podem levar a análises falhas e decisões de negócio equivocadas. Este projeto foi criado para resolver esse problema de forma automatizada e escalável.
+Este pipeline em Python transforma dados agrícolas de planilhas em um **mapa interativo e dinâmico**, mostrando a localização de apólices, culturas e áreas garantidas. O diferencial do projeto é sua capacidade de **validar e corrigir dados geograficamente**, utilizando os limites oficiais dos estados brasileiros (via GeoJSON) como fonte da verdade.
+
+A ferramenta foi projetada para resolver o problema de dados de localização imprecisos, automatizando a limpeza e garantindo que as análises de risco sejam baseadas em informações confiáveis.
+
+---
+
+### 🖼️ Demonstração
+
+*(Dica: Grave um GIF curto mostrando o mapa final em ação e substitua o link abaixo. Um GIF é muito mais impactante!)*
+
+![Demo do Mapa Interativo](https://github.com/jeancarlosde-lima/Mapa-Seguro-Agr-cola/blob/main/mapa_exemplo.gif)
 
 ---
 
 ### ✨ Funcionalidades Principais
 
-* **⚙️ Automação de Processos:** Ingestão de dados diretamente de planilhas (`.xlsx`) e processamento em lote.
-* **🧹 Limpeza e Padronização:** Implementação de um parser robusto com Expressões Regulares (RegEx) para interpretar e converter múltiplos formatos de coordenadas (DMS, Decimal).
-* **🌍 Validação Geoespacial:** Utilização de um algoritmo **"ponto-em-polígono"** com um shapefile GeoJSON para validar programaticamente se cada apólice pertence ao estado (UF) declarado, garantindo conformidade territorial.
-* **🧠 Correção Inteligente:** Em caso de divergências, o pipeline enriquece os dados utilizando a API do Nominatim (via **Geopy**) para encontrar a localização correta. Como fallback, o centróide da UF é utilizado para evitar a perda de dados.
-* **📊 Visualização Interativa:** Geração de um mapa `.html` dinâmico com **Folium**, apresentando cada apólice como um ponto de dados interativo, com dashboards, legendas e pop-ups detalhados para uma análise visual e intuitiva.
-
----
-
-### 🚀 Demonstração em Vídeo (GIF)
-
-*(Dica: Grave um GIF curto mostrando a interação com o mapa final. É muito mais impactante que uma imagem estática. Use ferramentas como LICEcap ou Giphy Capture para gravar sua tela. Depois, adicione o GIF na pasta do projeto e atualize o link abaixo.)*
-
-![Demo do Mapa Interativo](caminho/para/seu/mapa-demo.gif)
+* **Validação Geográfica Precisa:** Utiliza um algoritmo "ponto-em-polígono" para verificar se cada coordenada está dentro da UF correta.
+* **Correção Automática de Coordenadas:**
+    * 📡 Geocodificação via **OpenStreetMap (Nominatim)** para endereços sem coordenadas.
+    * 🎯 Atribuição do **centróide do estado** como fallback para garantir que nenhum dado seja perdido.
+* **Engenharia de Dados:**
+    * 📂 Leitura e manipulação de dados em lote com **Pandas**.
+    * 📍 Parser de múltiplos formatos de coordenadas (DMS ↔ Decimal) com RegEx.
+* **Visualização Rica:**
+    * 🗺️ Geração de um arquivo `.html` interativo com **Folium**.
+    * 🎨 Marcadores coloridos por tipo de cultura.
+    * 📊 Cabeçalho customizado com logo e estatísticas dinâmicas.
+    * 🔖 Legenda e pop-ups detalhados para cada ponto no mapa.
 
 ---
 
@@ -36,39 +45,58 @@ No setor de seguros agrícolas, a precisão dos dados de localização é fundam
 
 | Ferramenta | Propósito |
 | :--- | :--- |
-| **Python** | Linguagem principal do projeto |
-| **Pandas** | Manipulação, limpeza e estruturação dos dados |
-| **Folium** | Geração dos mapas interativos em HTML/JS |
+| **Python 3.x** | Linguagem principal |
+| **Pandas** | Manipulação e estruturação dos dados |
+| **Folium** | Geração dos mapas interativos |
 | **Geopy** | Geocodificação (consultas a APIs de mapas) |
-| **JSON & RegEx** | Leitura de shapefiles e parsing de texto |
+| **Openpyxl**| Leitura de arquivos Excel |
 
 ---
 
-### ⚡ Como Executar
+### 📦 Como Instalar e Rodar
 
 1.  **Clone o repositório:**
     ```bash
     git clone [https://github.com/jeancarlosde-lima/Mapa-Seguro-Agr-cola.git](https://github.com/jeancarlosde-lima/Mapa-Seguro-Agr-cola.git)
+    cd Mapa-Seguro-Agr-cola
     ```
-2.  **Crie e ative um ambiente virtual:**
-    ```bash
-    python -m venv venv && source venv/bin/activate
-    ```
-3.  **Instale as dependências:**
+2.  **Instale as dependências:**
     ```bash
     pip install -r requirements.txt
     ```
+    *(Nota: Se o arquivo `requirements.txt` não existir, crie-o com `pip freeze > requirements.txt`)*
+
+3.  **Estrutura de Arquivos:** Garanta que seu diretório tenha a seguinte estrutura, com os nomes de arquivos correspondendo ao que está no script:
+    ```
+    /Mapa Seguradora_agro
+    ├── seu_script.py
+    ├── dados_ficticios.xlsx
+    ├── br.json
+    └── logo_projeto.png
+    ```
+
+A funcionalidade "fork" do GitHub, se utilizada, destina-se apenas ao estudo pessoal do código, não implicando em qualquer licença ou direito de uso, modificação ou redistribuição.
+
 4.  **Execute o script:**
     ```bash
-    python nome_do_seu_script.py
+    python seu_script.py
     ```
-5.  Abra o arquivo `.html` gerado no seu navegador para ver o mapa.
+    Um arquivo `mapa_final.html` (ou similar) será gerado. Abra-o em qualquer navegador.
 
 ---
 
-### 👤 Autor
+### 💡 Criado por
 
 **Jean Lima**
-
-* [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jeancarlosodelima/)
+* [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jeancarlosdelima/)
 * [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/jeancarlosde-lima)
+
+
+
+### ⚖️ Direitos Autorais e Uso
+
+Copyright © 2025 Jean Lima. Todos os Direitos Reservados.
+
+Este projeto é um trabalho proprietário e seu código-fonte é disponibilizado neste repositório do GitHub estritamente para fins de **demonstração e avaliação de portfólio**.
+
+Nenhuma permissão é concedida para copiar, modificar, distribuir, usar em outros projetos (sejam eles pessoais, acadêmicos ou comerciais) ou criar trabalhos derivados a partir deste código sem o consentimento prévio e por escrito do autor.
