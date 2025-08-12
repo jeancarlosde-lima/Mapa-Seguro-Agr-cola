@@ -18,9 +18,7 @@ A ferramenta foi projetada para resolver o problema de dados de localização im
 
 ### 🖼️ Demonstração
 
-*(Dica: Grave um GIF curto mostrando o mapa final em ação e substitua o link abaixo. Um GIF é muito mais impactante!)*
-
-![Demo do Mapa Interativo](https://github.com/jeancarlosde-lima/Mapa-Seguro-Agr-cola/blob/main/mapa_exemplo.gif)
+![Demo do Mapa Interativo](https://drive.google.com/file/d/1VtOTlKN6HJd1cYS1t8CW-pGJgwWZoJKU/view?usp=sharing)
 
 ---
 
@@ -69,13 +67,11 @@ A ferramenta foi projetada para resolver o problema de dados de localização im
 3.  **Estrutura de Arquivos:** Garanta que seu diretório tenha a seguinte estrutura, com os nomes de arquivos correspondendo ao que está no script:
     ```
     /Mapa Seguradora_agro
-    ├── seu_script.py
+    ├── script.py
     ├── dados_ficticios.xlsx
     ├── br.json
     └── logo_projeto.png
     ```
-
-A funcionalidade "fork" do GitHub, se utilizada, destina-se apenas ao estudo pessoal do código, não implicando em qualquer licença ou direito de uso, modificação ou redistribuição.
 
 4.  **Execute o script:**
     ```bash
