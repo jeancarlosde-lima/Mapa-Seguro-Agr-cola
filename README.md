@@ -63,12 +63,12 @@ Execute o script principal:
 Bash
 
 python nome_do_seu_script.py
-Abra o arquivo mapa_proposta_julho.html gerado no seu navegador.
+Abra o arquivo mapa_apolices.html gerado no seu navegador.
 
 👤 Autor
 Jean Lima
 
-LinkedIn: https://www.linkedin.com/in/seu-perfil
+LinkedIn: https://www.linkedin.com/in/jeancarlosodelima
 
-GitHub: https://github.com/seu-usuario
+GitHub: https://github.com/jeancarlosde-lima
 
