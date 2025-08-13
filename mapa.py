@@ -9,7 +9,7 @@ from geopy.geocoders import Nominatim
 from geopy.extra.rate_limiter import RateLimiter
 
 # Inicializa o geolocalizador e o rate limiter (para evitar exceder o limite de requisições)
-geolocator = Nominatim(user_agent="sompo_agro_app")
+geolocator = Nominatim(user_agent="agro_app")
 geocode_rate_limited = RateLimiter(geolocator.geocode, min_delay_seconds=1)
 geocode_cache = {}  # Cache para evitar consultas repetidas
 
